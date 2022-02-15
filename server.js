@@ -19,7 +19,6 @@ function filterByQuery(query, animalsArray) {
     }
 
     //////////////////////////////////////////////
-    let filteredResults = animalsArray;
 
     if (query.diet) {
         filteredResults = filteredResults.filter(animal => animal.diet === query.diet);
