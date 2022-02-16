@@ -1,6 +1,9 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
 const res = require('express/lib/response');
-const { animals } = require('./data/animals')
+const { animals } = require('./data/animals');
+const { type } = require('express/lib/response');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -52,6 +55,34 @@ function findById(id, animalsArray) {
     return result;
 }
 
+function createNewAnimal(body, animalsArray) {
+    // below, will be the main code for 'createNewAnimal'
+    const animal = body;
+    animalsArray.push(animal);
+
+    fs.writeFileSync(path.join(__dirname, './data/animals.json'), JSON.stringify({ animals: animalsArray }, null, 2));
+    //return finished code, to start (post) route for 'response
+    return animal;
+}
+
+function validateAnimal(animal) {
+    if (!animal.name || typeof animal.name !== 'string') {
+        return false;
+    }
+    if (!animal.species || typeof animal.species !== 'string') {
+        return false;
+    }
+    if (!animal.diet || typeof animal.diet !== 'string') {
+        return false;
+    }
+    if (!animal.personalityTraits || !Array.isArray(animal.personalityTraits)) {
+        return false;
+    } else {
+        return true;
+    }
+
+}
+
 app.get('/api/animals', (req, res) => {
     let results = animals;
     if (req.query) {
@@ -71,10 +102,23 @@ app.get('/api/animals/:id', (req, res) => {
 });
 
 app.post('/api/animals', (req, res) => {
-    //  REQ.BODY IS WHERE OUR INCOMING DATA IS
+    //set new (createNewAnimal) POST data 'i.d' to what the next 'index of the array' (position) in the array will be
 
-    console.log(req.body);
-    res.json(req.body);
+    req.body.id = animals.length.toString();
+    //side note the 'length' property will always be ONE number ahead in the index[array]
+
+
+    //**this is for any incorrect data, send 400 err */
+    if (!validateAnimal(req.body)) {
+        res.status(400).send('the animal is not properly formatted');
+    } else {
+        const animal = createNewAnimal(req.body, animals);
+        res.json(animal);
+    }
+
+    //**add 'animal' (new data) to json file && animals array in (createNewAniaml) func */
+    const animal = animals.length.toString();
+    res.json(animal);
 });
 
 app.listen(PORT, () => {
