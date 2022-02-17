@@ -7,8 +7,7 @@ const { type } = require('express/lib/response');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-
-///////////////////////
+///////////////////////////////////////////////////////////
 //this 'parse incoming string's && Arrays (data) **meaning to covert incoming client side data (Intercept POST request) before the 'callback func' ** converts HTTP into a JSON obj
 
 //parse any incoming string or array
