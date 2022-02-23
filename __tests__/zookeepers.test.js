@@ -37,6 +37,7 @@ test("filters by query", () => {
     const updatedZookeepers = filterByQuery({ age: 31 }, startingZookeepers);
 
     expect(updatedZookeepers.length).toEqual(1);
+    console.log(startingZookeepers);
 });
 
 test("finds by id", () => {
