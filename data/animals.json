@@ -108,7 +108,15 @@
         "loving"
       ],
       "id": "10"
+    },
+    {
+      "name": "rico",
+      "species": "🦖 ",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "anxious"
+      ],
+      "id": "11"
     }
   ]
 }
-

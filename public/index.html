@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Zoo Keepr</title>
+  <title>Zoo Keeper</title>
   <link href="https://fonts.googleapis.com/css?family=Karla:400,700|Rubik:400,400i,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
@@ -14,7 +14,7 @@
 <body>
   <header class="py-3 mb-3">
     <div class="flex-row justify-space-between align-center container-fluid mx-auto">
-      <h1 class="text-light bg-dark p-3">Zoo Keepr</h1>
+      <h1 class="text-light bg-dark p-3">Zoo Keeper</h1>
       <h3 class="text-light bg-dark p-3">A Zoo Animal Catalog</h3>
     </div>
     <div class="container-fluid mx-auto">
@@ -87,6 +87,7 @@
 
       <div class="col-12 col-lg-6 bg-dark p-3 mb-3">
         <h3 class="text-light">Enter a Zookeeper</h3>
+
         <form id="zookeeper-form">
           <label for="zookeeper-name" class="form-label">Zookeeper Name</label>
           <input type="text" id="zookeeper-name" class="form-input input" placeholder="Enter Name"
@@ -105,6 +106,22 @@
 
     </section>
 
+    <section class="my-2 flex-row justify-space-between">
+      <div class="col-12 col-lg-3 bg-dark p-3">
+        <h3 class="text-light">Search For Zookeepers</h3>
+        <form id="zookeeper-form">
+          <label for="name-input" class="form-label">Search by name</label>
+          <input name="name" id="name-input" class="form-input" />
+          <label for="age-input" class="form-label">Search by age</label>
+          <input name="age" id="age-input" class="form-input" type="number" />
+          <button class="btn">Get Zookeepers</button>
+        </form>
+      </div>
+      <div class="col-12 col-lg-9 bg-dark p-3">
+    
+        <div class="flex-row justify-space-between" id="display-area"></div>
+      </div>
+    </section>
 
   </main>
 
